@@ -17,6 +17,8 @@ use embassy_nrf::{
 use embassy_time::{Duration, Timer};
 use fmt::{info, unwrap};
 
+// task functions cannot use generics,
+// so it can't use a generic 'a lifetime specifier
 #[embassy_executor::task(pool_size = 5)]
 async fn blinker(mut led: Output<'static>, interval: Duration, _i: usize) {
     loop {
@@ -68,8 +70,8 @@ impl<'a> HwResources<'a> {
 
 #[embassy_executor::main]
 async fn main(spawner: Spawner) {
-    let p = embassy_nrf::init(Default::default());
-    let hw = HwResources::new(p);
+    let p: Peripherals = embassy_nrf::init(Default::default());
+    let hw: HwResources = HwResources::new(p);
 
     info!("Starting LED tasks");
     unwrap!(spawner.spawn(blinker(hw.col1, Duration::from_millis(900), 1)));
