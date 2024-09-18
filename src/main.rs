@@ -37,18 +37,18 @@ async fn button_task(mut pin: Input<'static>, tag: char) {
 }
 
 // Micro:bit hardware resources to use
-pub struct HwResources {
-    _row1: embassy_nrf::gpio::Output<'static>,
-    col1: embassy_nrf::gpio::Output<'static>,
-    col2: embassy_nrf::gpio::Output<'static>,
-    col3: embassy_nrf::gpio::Output<'static>,
-    col4: embassy_nrf::gpio::Output<'static>,
-    col5: embassy_nrf::gpio::Output<'static>,
-    btn_a: embassy_nrf::gpio::Input<'static>,
-    btn_b: embassy_nrf::gpio::Input<'static>,
+pub struct HwResources<'a> {
+    _row1: embassy_nrf::gpio::Output<'a>,
+    col1: embassy_nrf::gpio::Output<'a>,
+    col2: embassy_nrf::gpio::Output<'a>,
+    col3: embassy_nrf::gpio::Output<'a>,
+    col4: embassy_nrf::gpio::Output<'a>,
+    col5: embassy_nrf::gpio::Output<'a>,
+    btn_a: embassy_nrf::gpio::Input<'a>,
+    btn_b: embassy_nrf::gpio::Input<'a>,
 }
 
-impl HwResources {
+impl<'a> HwResources<'a> {
     fn new(p: Peripherals) -> Self {
         Self {
             // LED Matrix, columns 1 to 5
