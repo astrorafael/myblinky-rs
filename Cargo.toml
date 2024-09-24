@@ -30,8 +30,6 @@ doc = false             # Is documented by default.
 proc-macro = false     # Set to `true` for a proc-macro library.
 harness = false         # Use libtest harness.
 
-
-
 [[bin]]
 name = "blinky1"
 test = false
