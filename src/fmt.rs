@@ -1,5 +1,6 @@
 #![allow(unused)]
 
+#[macro_export]
 macro_rules! assert {
     ($($x:tt)*) => {
         {
@@ -11,6 +12,7 @@ macro_rules! assert {
     };
 }
 
+#[macro_export]
 macro_rules! assert_eq {
     ($($x:tt)*) => {
         {
@@ -22,6 +24,7 @@ macro_rules! assert_eq {
     };
 }
 
+#[macro_export]
 macro_rules! assert_ne {
     ($($x:tt)*) => {
         {
@@ -33,6 +36,7 @@ macro_rules! assert_ne {
     };
 }
 
+#[macro_export]
 macro_rules! debug_assert {
     ($($x:tt)*) => {
         {
@@ -44,6 +48,7 @@ macro_rules! debug_assert {
     };
 }
 
+#[macro_export]
 macro_rules! debug_assert_eq {
     ($($x:tt)*) => {
         {
@@ -55,6 +60,7 @@ macro_rules! debug_assert_eq {
     };
 }
 
+#[macro_export]
 macro_rules! debug_assert_ne {
     ($($x:tt)*) => {
         {
@@ -66,6 +72,7 @@ macro_rules! debug_assert_ne {
     };
 }
 
+#[macro_export]
 macro_rules! todo {
     ($($x:tt)*) => {
         {
@@ -78,6 +85,7 @@ macro_rules! todo {
 }
 
 #[cfg(not(feature = "defmt"))]
+#[macro_export]
 macro_rules! unreachable {
     ($($x:tt)*) => {
         ::core::unreachable!($($x)*)
@@ -85,12 +93,14 @@ macro_rules! unreachable {
 }
 
 #[cfg(feature = "defmt")]
+#[macro_export]
 macro_rules! unreachable {
     ($($x:tt)*) => {
         ::defmt::unreachable!($($x)*)
     };
 }
 
+#[macro_export]
 macro_rules! panic {
     ($($x:tt)*) => {
         {
@@ -102,6 +112,7 @@ macro_rules! panic {
     };
 }
 
+#[macro_export]
 macro_rules! trace {
     ($s:literal $(, $x:expr)* $(,)?) => {
         {
@@ -113,6 +124,7 @@ macro_rules! trace {
     };
 }
 
+#[macro_export]
 macro_rules! debug {
     ($s:literal $(, $x:expr)* $(,)?) => {
         {
@@ -124,6 +136,7 @@ macro_rules! debug {
     };
 }
 
+#[macro_export]
 macro_rules! info {
     ($s:literal $(, $x:expr)* $(,)?) => {
         {
@@ -135,6 +148,7 @@ macro_rules! info {
     };
 }
 
+#[macro_export]
 macro_rules! _warn {
     ($s:literal $(, $x:expr)* $(,)?) => {
         {
@@ -146,6 +160,7 @@ macro_rules! _warn {
     };
 }
 
+#[macro_export]
 macro_rules! error {
     ($s:literal $(, $x:expr)* $(,)?) => {
         {
@@ -158,6 +173,7 @@ macro_rules! error {
 }
 
 #[cfg(feature = "defmt")]
+#[macro_export]
 macro_rules! unwrap {
     ($($x:tt)*) => {
         ::defmt::unwrap!($($x)*)
@@ -165,6 +181,7 @@ macro_rules! unwrap {
 }
 
 #[cfg(not(feature = "defmt"))]
+#[macro_export]
 macro_rules! unwrap {
     ($arg:expr) => {
         match $crate::fmt::Try::into_result($arg) {

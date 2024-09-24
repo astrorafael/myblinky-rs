@@ -18,8 +18,22 @@ embassy-time = { version = "0.3.2", features = ["tick-hz-32_768"] }
 panic-halt = "0.2.0"
 panic-probe = { version = "0.3.2", features = ["print-defmt"], optional = true }
 
+# Example of customizing the library in Cargo.toml.
+[lib]
+crate-type = ["lib"]   # The crate types to generate
+name = "mylib"           # The name of the target.
+path = "src/lib.rs"    # The source file of the target.
+test = false            # Is tested by default.
+doctest = true         # Documentation examples are tested by default.
+bench = false           # Is benchmarked by default.
+doc = false             # Is documented by default.
+proc-macro = false     # Set to `true` for a proc-macro library.
+harness = false         # Use libtest harness.
+
+
+
 [[bin]]
-name = "myblinky"
+name = "blinky1"
 test = false
 bench = false
 

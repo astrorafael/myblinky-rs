@@ -1,8 +1,6 @@
 #![no_std]
 #![no_main]
 
-mod fmt;
-
 #[cfg(not(feature = "defmt"))]
 use panic_halt as _;
 
@@ -15,7 +13,7 @@ use embassy_nrf::{
     Peripherals,
 };
 use embassy_time::{Duration, Timer};
-use fmt::{info, unwrap};
+use mylib::{info, unwrap};
 
 // task functions cannot use generics,
 // so it can't use a generic 'a lifetime specifier
